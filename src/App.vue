@@ -9,29 +9,18 @@
         </div>
       </form>
       <div class="todo-list">
-        <div class="tile flex-centered" v-for="t in todos" :key="t.id">
-          <div class="tile-icon">
-              <i class="icon icon-time"></i>
-          </div>
-          <dir class="tile-content">
-            <div class="title-subtitle">{{ t.description }}</div>
-          </dir>
-          <div clas="tile-action">
-            <button class="btn btn-link-concluido">Concluído</button>
-            <button class="btn btn-link">
-              <span class="text-error">Remover</span>
-            </button>
-          </div>
-        </div>
+       <todo v-for="t in todos" :key="t.id" :todo="t"/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Todo from './components/Todo'
 
 export default {
   name: 'App',
+  components: { Todo },
   data() {
     return { todos: [], todo: { checked: false } }
   },
@@ -62,5 +51,16 @@ export default {
   }
   .btn-link-concluido{
     background-color: rgb(242, 242, 242);
+    margin: 1px;
   } 
-</style>
+  .btn.btn-link{
+    background-color: rgb(242, 242, 242);
+    border: 1px solid #e85600;
+    margin: 1px;
+  }
+  .btn-link:active{ 
+    color: blue;   
+    background: #e85600;
+    border-color: #e85600;
+}  
+  </style>
